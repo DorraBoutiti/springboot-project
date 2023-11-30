@@ -1,0 +1,18 @@
+<html>
+	<body>
+		<form method="post" action="/admin/ProduitAlimentaire/ajout" th:object="${prod}">
+			<input th:filed="${prod.codeProduit}" type="text" />
+			<input th:filed="${prod.desigProduit}" type="text" />
+			<input th:filed="${prod.prixProduit}" type="text" />
+			<input th:filed="${prod.apportEnergie}" type="text" />
+			<select th:filed="*{uniteProduit}">
+				<option value="kg">Kilogramme</option>
+				<option value="pieces">Piece</option>
+			</select>
+			<select th:filed="*{categorie.codeCateg}">
+				<option th:each="c:$Categs" value="${c.codeCateg}" th:text="${c.codeCateg}"></option>
+			</select>
+
+		</form>
+	</body>
+</html>
