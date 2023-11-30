@@ -12,6 +12,7 @@ import tn.uma.isamm.spring.tp1.dao.CategorieDAO;
 import tn.uma.isamm.spring.tp1.dao.ProduitDAO;
 import tn.uma.isamm.spring.tp1.entities.Categorie;
 import tn.uma.isamm.spring.tp1.entities.Produit;
+import tn.uma.isamm.spring.tp1.entities.ProduitAlimentaire;
 @Service
 public class MetierImpl implements Metier{
 	@Autowired
@@ -33,6 +34,9 @@ public class MetierImpl implements Metier{
 		}
 		return null;
 	}
+	//public List<ProduitAlimentaire> getProduitsAlimentaires() {
+    //    return produitDAO.findAllByType("ProduitAlimentaire"); 
+    //}
 	public Page<Produit> getProduitsPageable(int page, int size){
 		PageRequest pr = PageRequest.of(page, size);
 		Page<Produit> _page = produitDAO.findAll(pr);

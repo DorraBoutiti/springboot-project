@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{template}">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+    <title>Ajouter Produit Alimentaire</title>
+</head>
+<body>
+    <h1>Ajouter Produit Alimentaire</h1>
+    <form method="post" action="/admin/ProduitAlimentaire/ajout" th:object="${Prod}">
+        <label>Code Produit:</label>
+        <input th:field="*{codeProduit}" type="text" /><br/>
+
+        <label>Désignation:</label>
+        <input th:field="*{desigProduit}" type="text" /><br/>
+
+        <label>Prix:</label>
+        <input th:field="*{prixProduit}" type="text" /><br/>
+
+        <label>Apport Énergie:</label>
+        <input th:field="*{apportEnergie}" type="text" /><br/>
+
+        <label>Unité:</label>
+        <select th:field="*{uniteProduit}">
+            <option value="kg">Kilogramme</option>
+            <option value="pieces">Piece</option>
+        </select><br/>
+
+        <label>Catégorie:</label>
+        <select th:field="*{categorie.codeCateg}">
+            <option th:each="c : ${Categs}" th:value="${c.codeCateg}" th:text="${c.codeCateg}"></option>
+        </select><br/>
+
+        <button type="submit">Ajouter Produit Alimentaire</button>
+    </form>
+</body>
+</html>

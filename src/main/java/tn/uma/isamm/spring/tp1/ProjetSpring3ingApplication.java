@@ -39,7 +39,7 @@ public class ProjetSpring3ingApplication {
 		FournisseurDAO fournisseurDAO=ctx.getBean(FournisseurDAO.class);
 		CommandeDAO commandeDAO = ctx.getBean(CommandeDAO.class);
 		LigneCommandeDAO ligneCommandeDAO = ctx.getBean(LigneCommandeDAO.class);
-		
+	
 		
 		DetailClient dc1 = new DetailClient("tunis","202020","mail1@gmail.com");
 		Client c1 = new Client("ali");
@@ -85,6 +85,39 @@ public class ProjetSpring3ingApplication {
 		p44.setCategorie(cat2);
 		Produit p55= new ProduitCosmetique(115L, "masque", 1500, "piece", true);
 		p55.setCategorie(cat1);
+		
+		//*********************************************
+		int nombreDeDonnees = 300; 
+
+        for (int i = 0; i < nombreDeDonnees; i++) {            
+            DetailClient dc = new DetailClient("Adresse " + i, "202020" + i, "mail" + i + "@gmail.com");
+            Client client = new Client("Client " + i);
+            client.setDetailClient(dc);
+            dc.setClient(client);
+            clientDAO.save(client);
+            Commande commande = new Commande(new Date(), "Lieu " + i, client);
+            commandeDAO.save(commande);            
+            //Produit produit = new Produit(700L + i, "Produit " + i, 100 + i, "unité");
+            //produitDAO.save(produit);
+            Produit ptest1= new ProduitAlimentaire(1000L + i, "Lait" + i, 500, "piece",250 + i);
+            if(i %2 ==0) {
+            	ptest1.setCategorie(cat1);
+            }else {
+            	ptest1.setCategorie(cat2);
+            }
+            ptest1.setCategorie(cat1);
+    		Produit ptest2= new ProduitCosmetique(2500L + i, "Crème hydratante" + i , 500, "piece", true);
+    		if(i %2 ==0) {
+            	ptest2.setCategorie(cat1);
+            }else {
+            	ptest2.setCategorie(cat2);
+            }
+    		categorieDAO.save(cat1);
+    		categorieDAO.save(cat2);
+    		produitDAO.save(ptest1);
+    		produitDAO.save(ptest2);
+        }  
+          //*********************************************  
 		
 		categorieDAO.save(cat1);
 		categorieDAO.save(cat2);

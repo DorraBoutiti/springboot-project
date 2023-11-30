@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Produits Alimentaires</title>
+</head>
+<body>
+    <h1>Liste des Produits Alimentaires</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Code Produit</th>
+                <th>Désignation</th>
+                <th>Prix</th>
+                <th>Unité</th>
+                <th>Apport Énergie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Boucle sur la liste des produits alimentaires pour les afficher -->
+            <tr th:each="produit : ${produitsAlimentaires}">
+                <td th:text="${produit.codeProduit}"></td>
+                <td th:text="${produit.desigProduit}"></td>
+                <td th:text="${produit.prixProduit}"></td>
+                <td th:text="${produit.uniteProduit}"></td>
+                <td th:text="${produit.apportEnergie}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
