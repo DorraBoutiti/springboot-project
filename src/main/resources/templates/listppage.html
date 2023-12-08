@@ -63,17 +63,22 @@
                 <th>Prix</th>
                 <th>Unité</th>
                 <th>Type</th>
+                <th>action 1</th>
+                <th>action 2</th>
             </tr>
         </thead>
         <tbody>
             <!-- Boucle sur la liste des produits pour les afficher -->
             <tr th:each="produit : ${produits}">
-                <td th:text="${produit.codeProduit}"></td>
-                <td th:text="${produit.desigProduit}"></td>
-                <td th:text="${produit.prixProduit}"></td>
-                <td th:text="${produit.uniteProduit}"></td>
-                <td th:text="${produit.class.simpleName}"></td>
-            </tr>
+				<td th:text="${produit.codeProduit}"></td>
+				<td th:text="${produit.desigProduit}"></td>
+				<td th:text="${produit.prixProduit}"></td>
+				<td th:text="${produit.uniteProduit}"></td>
+				<td th:text="${produit.class.simpleName}"></td>
+				<!-- Liens pour la suppression et la modification -->
+				<td><a th:href="@{/admin/supprimer(id=${produit.codeProduit}, page=${currentPage}, size=10)}">Supprimer</a></td>
+				<td><a th:href="@{/admin/modifier(id=${produit.codeProduit})}">Modifier</a></td>
+			</tr>
         </tbody>
 							</table>
 						</div>
@@ -82,10 +87,11 @@
             <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}" 
             
                 th:class="${currentPage == i} ? 'active'">
-                <a th:href="@{'/admin/Produits/listpagine?page=' + __${i}__}">[[${i}]]</a>
+                <a th:href="@{'/admin/Produits/listpagine?page=' + __${i}__}">[[${i}]]--</a>
             </li>
         
 							</ul>
+							
 						</nav>
 					</div>
 				</div>

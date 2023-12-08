@@ -49,4 +49,8 @@ public class MetierImpl implements Metier{
 	public void deleteProduit(Long id) {
 		produitDAO.deleteById(id);
 	}
+	public long countTotalProduits() {
+	    return produitDAO.count(); 
+	}
+
 }

@@ -87,7 +87,7 @@ public class ProjetSpring3ingApplication {
 		p55.setCategorie(cat1);
 		
 		//*********************************************
-		int nombreDeDonnees = 300; 
+		int nombreDeDonnees = 30; 
 
         for (int i = 0; i < nombreDeDonnees; i++) {            
             DetailClient dc = new DetailClient("Adresse " + i, "202020" + i, "mail" + i + "@gmail.com");
@@ -97,9 +97,9 @@ public class ProjetSpring3ingApplication {
             clientDAO.save(client);
             Commande commande = new Commande(new Date(), "Lieu " + i, client);
             commandeDAO.save(commande);            
-            //Produit produit = new Produit(700L + i, "Produit " + i, 100 + i, "unité");
+            //Produit produit = new Produit(120L + i, "Produit " + i, 100 + i, "unité");
             //produitDAO.save(produit);
-            Produit ptest1= new ProduitAlimentaire(1000L + i, "Lait" + i, 500, "piece",250 + i);
+            Produit ptest1= new ProduitAlimentaire(160L + i, "Lait" + i, 500, "piece",250 + i);
             if(i %2 ==0) {
             	ptest1.setCategorie(cat1);
             }else {
